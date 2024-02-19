@@ -15,7 +15,7 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-
+    
     title = models.CharField(max_length=255)
     author = models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     content = models.TextField()
@@ -32,7 +32,7 @@ class Post(models.Model):
         ordering = ['-created_date']
     
     def __str__(self):
-       return '{} - {}'.format(self.name, self.id)
+       return '{}'.format( self.id)
     
 
 
