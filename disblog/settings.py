@@ -31,15 +31,36 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "multi_captcha_admin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django_extensions',
     'blog.apps.BlogConfig',
     'website.apps.WebsiteConfig',
+    'accounts.apps.AccountsConfig',
+    'sweetify',
+    'robots',
+    'debug_toolbar',
+    'taggit',
+    'django_summernote',
+    'captcha',
+    'compressor',
+    'cssmin',
+    'jsmin',
+        
 ]
+
+
+# site id from django sites framework
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -49,6 +70,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+
 ]
 
 ROOT_URLCONF = "disblog.urls"
@@ -138,4 +161,10 @@ STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
 
+# internal ip for using django devug toolbar module 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
 

@@ -7,3 +7,11 @@ app_name = 'blog'
 urlpatterns = [
     path('',blog_home_view,name='index'),
 ]
+
+
+
+
+
+
+
+

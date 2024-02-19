@@ -15,15 +15,38 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path,include,re_path
 from django.conf import settings
 from django.conf.urls.static import static
+import debug_toolbar
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('' , include('website.urls')),
-    path('blog/', include('blog.urls'))
+    path('blog/', include('blog.urls')),
+    path('accounts/',include('accounts.urls')),
+    # path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
+    re_path(r'^robots\.txt' , include('robots.urls')),
+    path('__debug__/',include(debug_toolbar.urls)),
+    # path('summernote/', include('django_summernote.urls')),
+    path('captcha/' , include('captcha.urls')),
+
+
+
+
+    # ------------------------------------------------------------------------------
+    # reset password urls paths 
+    # path('reset_password/', auth_views.PasswordResetView.as_view(),name="password_reset"), # reset password form
+
+    # path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name="password_reset_done"), # reset password data sent
+
+    # path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name="password_reset_confirm"), # reset password email sent and confirm
+
+    # path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name="password_reset_complete"), # reset password completed
+    # ------------------------------------------------------------------------------ 
+
+
 ]
 
 
