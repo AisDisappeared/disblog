@@ -4,10 +4,11 @@ from django.http import HttpResponse,JsonResponse
 
 
 def index_view(request):
-    pass 
+   return render(request , 'website/index.html')
+
 
 def about_view(request):
-    pass 
+   return render(request , 'website/index.html')
 
 def contact_view(request):
-    pass 
+   return render(request , 'website/index.html')
