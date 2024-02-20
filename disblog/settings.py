@@ -58,11 +58,20 @@ INSTALLED_APPS = [
 ]
 
 # SETTING ABOUT SWEETIFY1 OR SWEETIFY2
-SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+# SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 
 # site id from django sites framework
 SITE_ID = 1
+
+
+
+
+# Robots settings
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SITEMAP = False
+
+
 
 
 MIDDLEWARE = [
@@ -171,3 +180,9 @@ INTERNAL_IPS = [
     # ...
 ]
 
+
+
+# captcha model setting and type 
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
