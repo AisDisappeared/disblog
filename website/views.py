@@ -30,6 +30,8 @@ def contact_view(request):
          sweetify.success(request,'your message has been sent')
       else:
          sweetify.error(request,'your ticket post')
+
+         
    form = ContactForm(request.POST)
    context = {'form': form}
    return render(request , 'website/contact.html',context)
