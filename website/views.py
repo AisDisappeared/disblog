@@ -27,9 +27,9 @@ def contact_view(request):
       form = ContactForm(request.POST)
       if form.is_valid():
          form.save()       
-         sweetify.success(request,'your message has been sent')
+         sweetify.success(request,'your message has been sent',persistent = 'OK')
       else:
-         sweetify.error(request,'your ticket post')
+         sweetify.error(request,'your ticket doesn\'t  post',persistent = ':(')
 
          
    form = ContactForm(request.POST)
