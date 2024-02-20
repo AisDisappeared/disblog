@@ -57,6 +57,9 @@ INSTALLED_APPS = [
         
 ]
 
+# SETTING ABOUT SWEETIFY1 OR SWEETIFY2
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
 
 # site id from django sites framework
 SITE_ID = 1
