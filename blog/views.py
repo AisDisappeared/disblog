@@ -12,9 +12,11 @@ import sweetify
 
 
 # all blog posts view
-def blog_home_view(request):
+def blog_home_view(request,author_username=None):
     now = timezone.now()
     posts = Post.objects.filter(status=True,published_date__lte=now).order_by('-created_date')
+    if author_username:
+        posts = posts.filter(author__username=author_username)
     p = Paginator(posts,4)
     try:
         page_number = request.GET.get('page')
