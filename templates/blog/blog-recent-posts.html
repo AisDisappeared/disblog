@@ -9,7 +9,7 @@
       {% for post in posts %}
       <ul>
         <li>
-          <a href="#">
+          <a href="{% url 'blog:post-detail' pid=post.id %}">
             <h5>{{post.title}}</h5>
             <span>{{post.published_date|naturaltime}}</span>
           </a>

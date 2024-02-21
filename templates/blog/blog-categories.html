@@ -7,13 +7,12 @@
       </div>
       <div class="content">
         <ul>
-          <li><a href="#">- Nature Lifestyle</a></li>
-          <li><a href="#">- Awesome Layouts</a></li>
-          <li><a href="#">- Creative Ideas</a></li>
-          <li><a href="#">- Responsive Templates</a></li>
-          <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-          <li><a href="#">- Creative &amp; Unique</a></li>
+          {% for name,c in categories.items %}
+          <li><a href="{% url 'blog:category' cat_name=name %}">{{name}} : {{c}} posts</a></li>
+          {% endfor %}
         </ul>
       </div>
     </div>
   </div>
+
+

@@ -62,13 +62,19 @@
                     <h4>{{post.title}}</h4>
                   </a>
                   <ul class="post-info">
+                    {% for cat in post.categories.all %}
+                    <a href="{% url 'blog:category' cat_name=cat.name %}">{{cat.name}} |</a>
+                    {% if not forloop.last %}
+                    ,
+                    {% endif %}
+                    {% endfor %}
                     <li>{{post.counted_views}} view</li>
                     <li><a href="#">{{post.author}}</a></li>
                     <li><a href="#">{{post.published_date|naturaltime}}</a></li>
                     <li><a href="#">10 Comments</a></li>
                   </ul>
                   <p>{{post.content}}</p>
-                  
+
                   <div class="navigation-area">
                     <div class="row">
                       <div
@@ -110,7 +116,7 @@
                         {% endif %}
                       </div>
                     </div>
-                  </div>     
+                  </div>
                 </div>
               </div>
             </div>
@@ -211,10 +217,10 @@
       <div class="col-lg-4">
         <div class="sidebar">
           <div class="row">
-           
+
             {% include 'blog/blog-search.html' %}
             {% recent_posts %}
-            {% include 'blog/blog-categories.html' %}
+            {% categories %}
             {% include 'blog/blog-tags.html' %}
           </div>
         </div>
