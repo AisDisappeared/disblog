@@ -46,6 +46,8 @@ def blog_single(request,pid):
     prev_post = all_posts[current_index - 1] if current_index - 1 >= 0 else None 
     next_post = all_posts[current_index + 1] if current_index + 1 < len(all_posts) else None
     current_post = get_object_or_404(all_posts , pk = pid) 
+    current_post.counted_views += 1 
+    current_post.save()
     context = {'post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post}
     return render(request , 'blog/post-details.html', context)  
 
