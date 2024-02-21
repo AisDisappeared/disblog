@@ -4,16 +4,35 @@ from .models import Post
 from django.utils import timezone 
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 import sweetify 
 
 # Create your views here.
 
 
+
+# all blog posts view
 def blog_home_view(request):
-    posts = Post.objects.filter(status=True).order_by('-created_date')
+    now = timezone.now()
+    posts = Post.objects.filter(status=True,published_date__lte=now).order_by('-created_date')
+    p = Paginator(posts,4)
+    try:
+        page_number = request.GET.get('page')
+        posts = p.get_page(page_number)
+    except EmptyPage:
+        posts = posts.get_page(1)
+    except PageNotAnInteger:
+        posts = posts.get_page(1)
+
     context = {'posts': posts}
     return render(request , 'blog/blog.html' , context)
 
+
+
+
+
+
+# blog single view
 def blog_single(request,pid):
     now = timezone.now()
     all_posts = Post.objects.filter(status=True,published_date__lte=now)
