@@ -75,6 +75,19 @@ https://templatemo.com/tm-551-stand-blog
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'website:contact' %}">Contact Us</a>
                         </li>
+                        <!-- Login and Register Buttons -->
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary" href="{% url 'accounts:logout' %}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-success" href="{% url 'accounts:signup' %}">Register</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -134,6 +147,7 @@ https://templatemo.com/tm-551-stand-blog
 
 
 </body>
+
 </html>
 {% load sweetify %}
 {% sweetify %}

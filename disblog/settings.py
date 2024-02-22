@@ -186,3 +186,12 @@ INTERNAL_IPS = [
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+
+
+
+# modelbackend django settings 
+AUTHENTICATION_BACKENDS = [
+    'accounts.custom_auth_backends.CustomAuthenticationBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
