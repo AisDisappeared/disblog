@@ -57,3 +57,21 @@ def blog_single(request,pid):
     context = {'post' : current_post, 'prev_post' : prev_post , 'next_post' : next_post}
     return render(request , 'blog/post-details.html', context)  
 
+
+
+
+
+# search view 
+def blog_search(request):
+    now = timezone.now()
+    posts = Post.objects.filter(status = 1 , published_date__lte=now)
+    if request.method == 'GET':
+        # python valrus
+        if s := request.GET.get('s'):
+            posts = posts.filter(content__contains=s)
+
+    context = {'posts' : posts}
+    return render(request , 'blog/blog.html' , context)   
+
+
+
