@@ -68,6 +68,9 @@
                     ,
                     {% endif %}
                     {% endfor %}
+                    {% for tag in post.tags.all %}
+                    <li><a href="{% url 'blog:tag' tag_name=tag.name %}">{{tag.name}}</a></li>
+                    {% endfor %}
                     <li>{{post.counted_views}} view</li>
                     <li><a href="#">{{post.author}}</a></li>
                     <li><a href="#">{{post.published_date|naturaltime}}</a></li>
