@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
-
+from django.urls import reverse
 
 # Create your models here.
 
@@ -42,6 +42,10 @@ class Post(models.Model):
     
     def __str__(self):
        return '{}'.format( self.id)
+    
+   
+    def get_absolute_url(self):
+        return reverse('blog:post-detail',kwargs={'pid':self.id})
     
 
 

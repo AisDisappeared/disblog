@@ -19,7 +19,19 @@ from django.urls import path,include,re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.contrib.sitemaps.views import sitemap
+from blog.sitemaps import BlogSitemap
+from website.sitemaps import StaticViewSitemap
 import debug_toolbar
+
+
+
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "blog": BlogSitemap,
+}
+
 
 
 urlpatterns = [
@@ -27,7 +39,7 @@ urlpatterns = [
     path('' , include('website.urls')),
     path('blog/', include('blog.urls')),
     path('accounts/',include('accounts.urls')),
-    # path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
+    path("sitemap.xml",sitemap,{"sitemaps": sitemaps},name="django.contrib.sitemaps.views.sitemap",),
     re_path(r'^robots\.txt' , include('robots.urls')),
     path('__debug__/',include(debug_toolbar.urls)),
     # path('summernote/', include('django_summernote.urls')),
