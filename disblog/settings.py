@@ -68,8 +68,8 @@ SITE_ID = 1
 
 
 # Robots settings
-ROBOTS_USE_HOST = False
-ROBOTS_USE_SITEMAP = False
+ROBOTS_USE_HOST = True
+ROBOTS_USE_SITEMAP = True
 
 
 
