@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
 from .forms import ContactForm
 from django.contrib import messages 
+from blog.models import Post
+from django.utils import timezone
 import sweetify
 # Create your views here.
 
@@ -11,7 +13,10 @@ import sweetify
 
 # index home view function 
 def index_view(request):
-   return render(request , 'website/index.html')
+   now = timezone.now()
+   posts = Post.objects.filter(status=True,published_date__lte=now).order_by('-created_date')[:3]
+   context = {'posts': posts}
+   return render(request , 'website/index.html' , context)
 
 
 
