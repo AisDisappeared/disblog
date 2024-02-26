@@ -14,8 +14,9 @@ import sweetify
 # index home view function 
 def index_view(request):
    now = timezone.now()
+   Banner6posts = Post.objects.filter(status=True,published_date__lte=now).order_by('-created_date')[:6]
    posts = Post.objects.filter(status=True,published_date__lte=now).order_by('-created_date')[:3]
-   context = {'posts': posts}
+   context = {'posts': posts , 'Banner6posts':Banner6posts}
    return render(request , 'website/index.html' , context)
 
 
